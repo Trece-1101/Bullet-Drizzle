@@ -103,7 +103,6 @@ class GamePlay extends Phaser.Scene {
     this.enemies.add(this.enemy3);
     this.enemies.add(this.enemy4);
 
-    console.log(this.enemies.getChildren())
 
     this.enemies.getChildren().forEach((enemy) => {
       enemy.setScale(0.4);
@@ -113,25 +112,6 @@ class GamePlay extends Phaser.Scene {
     // VFX
     this.createAnim("explode", "explosion", 20, 0, true);
     this.createAnim("power_up", "power_up", 20, -1, false);
-
-    // // Powerups
-    // this.powerUps = this.physics.add.group();
-    // var maxPowerUps = 1;
-    // for (let index = 0; index < maxPowerUps; index++) {
-    //   var powerUp = this.physics.add.sprite(16, 16, "power_up");
-    //   this.powerUps.add(powerUp);
-    //   powerUp.setRandomPosition(
-    //     0,
-    //     0,
-    //     configuration.width,
-    //     configuration.height,
-    //   );
-    //   powerUp.setScale(1.5);
-    //   powerUp.setCollideWorldBounds(true);
-    //   this.setRandomVelAndBounce(powerUp);
-    // }
-
-    // this.powerUpSound = this.sound.add("powerup_sfx");
 
     
     // Player 
@@ -360,7 +340,6 @@ class GamePlay extends Phaser.Scene {
   can_loop = false;
 
   update() {
-    console.log(this.elapsed);
     if (Phaser.Input.Keyboard.JustDown(this.enterKey)) {
       this.can_loop = !this.can_loop;
       this.time_timer.paused = !this.time_timer.paused;
