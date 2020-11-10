@@ -6,10 +6,7 @@ self.onmessage = function (obj) {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
           },
-<<<<<<< Updated upstream
-        body: JSON.stringify({game: "Bullet Drizzle", event: "setScore", data: ""})
-=======
         body: JSON.stringify(obj)
->>>>>>> Stashed changes
+        //body: JSON.stringify({game: "Bullet Drizzle", event: "setScore", data: ""})
     });
 }
