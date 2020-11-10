@@ -16,7 +16,6 @@ class Bullet extends Phaser.GameObjects.Sprite{
 
     update(){
         if(this.y < 50){
-            console.log("destroy")
             this.destroy();
         }
     }
