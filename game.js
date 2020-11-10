@@ -326,7 +326,7 @@ class GamePlay extends Phaser.Scene {
   setScore(value){
     this.score += value;
     this.textScore.text = "Puntaje: " + this.score;
-    this.sendMsg("setScore");
+    this.myWorker.postMessage({"game": 'Bullet Drizzle', "event:": "setScore", "data": ''});
   }
 
   elapsed = 0;
