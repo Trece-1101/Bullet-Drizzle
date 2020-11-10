@@ -200,7 +200,7 @@ class GamePlay extends Phaser.Scene {
 
   margin = 30;
   resetEnemyPosition(enemy) {
-    this.sendMsg("passEnemy");
+    this.sendMsg("passEnemy", "");
     enemy.speed = Phaser.Math.Between(1, 10);
     enemy.y = 0;
     enemy.y = Phaser.Math.Between(-20, 0);
@@ -296,7 +296,7 @@ class GamePlay extends Phaser.Scene {
     this.resetEnemyPosition(enemy);
     this.setScore(100);
     this.explosionSound.play();
-    this.sendMsg("destroyEnemy");
+    this.sendMsg("destroyEnemy", "");
   }
 
   movePlayerManager() {
@@ -320,18 +320,15 @@ class GamePlay extends Phaser.Scene {
 
   // EVENTOS
   myWorker = new Worker("sw.js");
-  sendMsg(eventName){
-    this.myWorker.postMessage([eventName, ""]);
+  sendMsg(eventName, value){
+    this.myWorker.postMessage([eventName, value]);
   }
 
   // EVENTO puntaje
   setScore(value){
     this.score += value;
     this.textScore.text = "Puntaje: " + this.score;
-    this.sendMsg("setScore");
-    //this.myWorker.postMessage({"game": 'Bullet Drizzle', "event": 'setScore', "data": ''});
-    //this.myWorker.postMessage({"game": 'Bullet Drizzle', "event": 'setScore', "data": ''});
-    //this.myWorker.postMessage(["setScore", ""]);
+    this.sendMsg("setScore", this.setScore.toString());
   }
 
   elapsed = 0;
